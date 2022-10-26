@@ -1,0 +1,60 @@
+<form [formGroup]="presupuestoConsultaForm">
+  <div class="row">
+
+
+    <div class="col-12 col-sm-2 mb-2 ">
+      <label class="text-capitalize">Tarea</label>
+      <input type="text" formControlName="tarea"
+             [ngClass]="{ 'is-invalid': submitted && f.tarea.errors }"
+             class="form-control " />
+    </div>
+
+    <div class="col-12 col-sm-2 mb-2">
+      <label  class="">Pais</label>
+      <select  class="form-select " formControlName="idPais"
+               (change)="changePais($event)"
+               [ngClass]="{ 'input-loader': loadingPaises$ | async }">
+        <option  *ngFor="let p of paises$ | async" [value]="p.paisId">{{ p.nombrePais}}</option>
+      </select>
+    </div>
+
+    <div class="col-12 col-sm-2 mb-2">
+      <label  class="">Ciudad</label>
+      <select  class="form-select " formControlName="idCiudad"
+               [ngClass]="{ 'input-loader': loadingCiudades$ | async }">
+        <option  *ngFor="let c of ciudades$ | async" [value]="c.ciudadId">{{ c.nombreCiudad}}</option>
+      </select>
+    </div>
+
+    <div class="col-12 col-sm-2 mb-2 ">
+      <label class="text-capitalize">Id del cambio</label>
+      <input type="text" formControlName="idCambio"
+             [ngClass]="{ 'is-invalid': submitted && f.idCambio.errors }"
+             class="form-control " />
+    </div>
+
+
+<!--    <div class="col-12 col-sm-2 mb-2">-->
+<!--      <label  class="">Estado</label>-->
+<!--      <select  class="form-select " formControlName="idEstado"-->
+<!--               [ngClass]="{ 'input-loader': loadingEstadoContrato$ | async }">-->
+<!--        <option  *ngFor="let e of estadoContrato$ | async" [value]="e.id">{{ e.nombre}}</option>-->
+<!--      </select>-->
+<!--    </div>-->
+
+
+    <div class="col-12 col-sm-4 mb-2 d-flex align-items-end justify-content-end">
+      <div class="form-group ">
+
+        <button type="button" class="btn btn-primary-app"
+
+                (click)="onSubmit()">
+          <i class="fas fa-search"></i>
+          Buscar</button>
+
+      </div>
+    </div>
+
+  </div>
+
+</form>

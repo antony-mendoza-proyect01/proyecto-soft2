@@ -1,0 +1,25 @@
+@import "../../../../../scss/variables";
+
+
+#content {
+  width: 100%;
+  min-height: 100vh;
+  transition: all 0.3s;
+  .content-router{
+    width: 100%;
+  }
+  .header-fixed{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1039;
+  }
+}
+
+.content-page{
+  overflow-y: auto;
+  height: 100vh;
+  margin-top: $header-size ;
+  padding-bottom: $header-size ;
+}

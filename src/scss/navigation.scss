@@ -1,0 +1,44 @@
+@import "variables";
+
+@mixin active {
+  background-color: $color-icono-hover;
+  color: $color-primary;
+}
+//
+//a[aria-expanded="true"] {
+//  @include active;
+//}
+.a-navigation{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:  $navigation-a-padding-y - 0.1;
+  font-size: $font-size-primary;
+  color: $color-text;
+  font-weight: 400;
+  border-radius: $border-radius;
+  min-height: 35px;
+  line-height: 1;
+  padding: 0.8rem !important;
+  margin: 2px 0;
+
+  &:hover, &.active {
+    @include active;
+  }
+
+  &.activeUrl{
+    color: $color-primary;
+  }
+
+  i{
+    display: flex;
+    align-items: center;
+    min-width: 20px;
+    min-height: 20px;
+    font-size: $font-size-secondary;
+  }
+
+  span {
+    font-size: $font-size-primary;
+  }
+}

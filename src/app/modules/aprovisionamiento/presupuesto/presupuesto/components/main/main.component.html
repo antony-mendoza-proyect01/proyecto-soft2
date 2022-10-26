@@ -1,0 +1,36 @@
+
+<div class="d-flex align-items-center p-container bg-c-container border-bottom">
+
+  <h3 class="d-flex align-items-center c-t pb-2 ">
+<!--    <i class="fas {{navigation.icono}} me-2 t-c-secondary "></i>-->
+    {{navigation.titulo}}
+  </h3>
+
+</div>
+
+
+<div class="container-fluid mt-3 p-container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="mb-2 c-t-secondary">Sub Modulos:</h4>
+    </div>
+
+
+    <div class="col-sm-4 mb-3 "
+         *ngFor="let subMenu of navigation.subMenu">
+
+      <a  [routerLink]="subMenu.link">
+        <div class="card shadow bg-c-i-h">
+
+          <div class="card-body">
+
+            <h5 class="c-t my-3">{{subMenu.titulo}}</h5>
+          </div>
+
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</div>

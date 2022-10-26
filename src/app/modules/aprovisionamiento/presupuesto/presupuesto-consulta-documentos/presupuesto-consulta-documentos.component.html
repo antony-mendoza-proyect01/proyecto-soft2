@@ -1,0 +1,26 @@
+<div class="app-page">
+
+  <div class="app-page-title border-bottom">
+    <h2 class="c-t lh-1"><i class="fas fa-paste "></i>Documentos de Presupuesto </h2>
+
+    <app-form
+      (searchCity)="searchCity($event)"
+      (searchConsulta)="searchConsulta($event)">
+    </app-form>
+  </div>
+
+  <div class="app-page-container">
+
+    <div class="app-page-container-list">
+
+
+      <app-alert #AlertComponent></app-alert>
+
+      <app-listado >
+      </app-listado>
+
+    </div>
+
+  </div>
+
+</div>

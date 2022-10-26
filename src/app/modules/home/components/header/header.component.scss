@@ -1,0 +1,61 @@
+@import "../../../../../scss/variables";
+p{
+  margin: 0;
+}
+
+.content-page-dashboard{
+  display: none;
+}
+
+#ngbDropdown{
+  .dropdown-item{
+    padding:  $navigation-a-padding-y - 0.25 $navigation-a-padding-x;
+    border-radius: 0;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .header {
+    &-content, &-content__logo{
+      &__logo__title{
+      }
+    }
+    &-content__complete{
+      justify-content: flex-end;
+      &__toggle{
+        display: initial;
+      }
+
+      &__crumb, &__icon{
+        display: none;
+
+        &__container{
+          flex-direction: column;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .hover{
+    margin-right: 0.5rem !important;
+  }
+  #sidebar {
+    background-color: white;
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom:  4rem !important;
+    padding-top:  1rem !important;
+  }
+
+  .dropdown-item{
+    justify-content: center;
+  }
+
+  .content-page-dashboard.active{
+    display: block !important;
+  }
+
+}

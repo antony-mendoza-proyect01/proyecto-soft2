@@ -1,0 +1,80 @@
+<div class="modal-header">
+  <h5 class="fw-bold text-capitalize m-0">Selección de Formatos de Presupuestos</h5>
+  <a type="button" class="close btn-cancel-app"
+     (click)="activeModal.dismiss('Canceled')">
+    <i class="fas fa-times"></i></a>
+</div>
+
+<div class="modal-body ">
+
+  <div class="row">
+    <div class="col-sm-12 ">
+      <app-alert #AlertComponent ></app-alert>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12" >
+
+      <div class="table-responsive fixTableHead ">
+        <table class="table table-striped  table-bordered  table-sm mb-1 "
+                [ngClass]="{'table_loader': loading$ | async  }">
+            <thead>
+              <tr>
+                <th scope="col" ><span>codigo</span></th>
+                <th scope="col" ><span>nombre</span></th>
+                <th scope="col" ><span>version</span></th>
+                <th scope="col" >
+                  <div class="table-action-center">
+                    <a (click)="onCheckAll()">
+                      <i class=" "
+                          [ngClass]="{
+                          'fas fa-square-check c-success' : formatosCheckAll,
+                          'fa-regular fa-square' : !formatosCheckAll}" ></i>
+                    </a>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let f of  formatos"  >
+                <td><span>{{ f.codigo }}</span></td>
+                <td><span>{{ f.nombre }}</span></td>
+                <td><span>{{ f.version }}</span></td>
+                <td>
+                  <div class="table-action-center">
+
+                    <a (click)="f.check = !f.check">
+                      <i class=" "
+                          [ngClass]="{
+                          'fas fa-square-check c-success' : f.check,
+                          'fa-regular fa-square' : !f.check}" ></i>
+                    </a>
+
+                  </div>
+                </td>
+              </tr>
+
+              <tr *ngIf="formatos?.length === 0" >
+                <td colspan="99" class="text-center">
+                  <span class="mb-0 ">No se encuentran registros para su busqueda</span>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class="modal-footer ">
+  <button type="button" class="btn btn-sm btn-cancel-app"
+          (click)="activeModal.dismiss('Canceled')">Cancelar</button>
+
+  <button class="btn btn-primary-app"
+          (click)="onSubmit()">Aceptar</button>
+</div>

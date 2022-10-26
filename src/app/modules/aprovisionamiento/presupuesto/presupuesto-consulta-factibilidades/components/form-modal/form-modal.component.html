@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <h5 class="fw-bold text-capitalize m-0">Tarea {{tareasPresupuesto.tarea}}</h5>
+  <a type="button" class="close btn-cancel-app"
+     (click)="activeModal.dismiss('Canceled')">
+    <i class="fas fa-times"></i></a>
+</div>
+
+<div class="modal-body lh-1">
+
+  <div class="row">
+
+    <div class="col-sm-4 mb-2">
+      <p class="m-0"><strong>Tarea:</strong></p>
+      <span>{{tareasPresupuesto.tarea}}</span>
+    </div>
+    <div class="col-sm-4 mb-2">
+      <p class="m-0"><strong>ID Cambio:</strong></p>
+      <span>{{tareasPresupuesto.ciCliente}}</span>
+    </div>
+    <div class="col-sm-4 mb-2">
+      <p class="m-0"><strong>Cliente final:</strong></p>
+      <span>{{tareasPresupuesto.clienteFinal}}</span>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-4 mb-2">
+      <p class="m-0"><strong>Servicio:</strong></p>
+      <span>{{tareasPresupuesto.servicio}}</span>
+    </div>
+    <div class="col-sm-4 mb-2">
+      <p class="m-0"><strong>Categoria de la Tarea:</strong></p>
+      <span>{{tareasPresupuesto?.categoriaTarea}}</span>
+    </div>
+    <div class="col-sm-4 mb-2">
+      <p class="m-0"><strong>Estado:</strong></p>
+      <span>{{tareasPresupuesto.estado}}</span>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <app-listado-documentos></app-listado-documentos>
+    </div>
+  </div>
+
+
+</div>
+
+
+<div class="modal-footer " *ngIf="consulta$ | async as consulta">
+
+  <button type="button" class="btn btn-sm btn-cancel-app"
+          (click)="activeModal.dismiss('Canceled')">Cancelar</button>
+
+  <button class="btn btn-primary-app"
+          [disabled]="(loading$ | async)"
+          (click)="onGenerarDocumentos(consulta)">
+    Generar documentos
+    <i class="fas" [ngClass]="{'fa-spinner animation-sync' : (loading$ | async)} "></i>
+  </button>
+</div>

@@ -1,0 +1,37 @@
+@import "../../../../scss/variables";
+
+.breadcrumb-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-container;
+  padding: $tamano-pagina-size - 0.5 $tamano-pagina-size * 2;
+
+  .breadcrumb{
+    padding: 0;
+    margin: 0;
+
+    .breadcrumb-item{
+      a{
+        color: $color-primary;
+
+        span{
+          font-size: $font-size-secondary;
+        }
+      }
+    }
+    .active a{
+      color: $color-text-secondary !important;
+
+      &:hover{
+        cursor: initial !important;
+        text-decoration: initial!important;
+      }
+    }
+  }
+}
+// media QueryList
+@media (max-width: $breakpoint-tel) {
+  .breadcrumb-container {
+    padding: 0 $tamano-pagina-size;
+  }
+}

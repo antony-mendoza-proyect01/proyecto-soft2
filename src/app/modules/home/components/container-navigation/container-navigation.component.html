@@ -1,0 +1,71 @@
+<div id="content">
+  <app-header class="header-fixed"
+              [user]="user"
+              [navigationAplicacion]="aplications"
+  ></app-header>
+
+
+
+  <div class="content-page">
+
+    <div class="d-flex flex-column justify-content-center align-items-center p-3 lh-1 bg-c-container-primary-dark">
+      <svg class="position-absolute top-0   pointer-events-none"
+           viewBox="0 " width="100%" height="100%"
+           preserveAspectRatio="xMaxYMax slice">
+        <g class="text-white opacity-25" fill="none" stroke="currentColor" stroke-width="50">
+          <circle r="60" cx="60" cy="200"></circle>
+          <circle r="60" cx="220" cy="15"></circle>
+          <circle r="60" cx="380" cy="200"></circle>
+        </g>
+      </svg>
+      <p class="c-t-primary t-fs-primary m-0">{{user?.nombres}} {{user?.apellidos}}</p>
+      <h2 class="c-t-primary m-0">Bienvenido a SAR</h2>
+
+    </div>
+
+
+    <!-------------------------------------------
+    Init, content
+    ------------------------------------------->
+    <div class="container mt-3">
+
+
+      <div class="row">
+
+        <div class="col-sm-4 mb-3" *ngFor="let a of aplications">
+
+          <div class="card ">
+
+            <div class="card-header d-flex py-3 align-items-center
+            gap-2 bg-c-container-primary">
+              <figure class="m-0">
+                <img [src]="a.icono" alt="logo">
+              </figure>
+              <h4 class="c-t-primary m-0 fw-bold">{{a.titulo}}</h4>
+            </div>
+
+            <div class="card-body ">
+
+
+
+              <app-navigation-list [navigations]="a.navegacion"></app-navigation-list>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-------------------------------------------
+      End, content
+    ------------------------------------------->
+  </div>
+
+</div>
+
+
+
+
+
+

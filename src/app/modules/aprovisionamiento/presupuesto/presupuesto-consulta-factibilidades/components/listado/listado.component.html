@@ -1,0 +1,60 @@
+<div class="table-responsive fixTableHead " >
+  <table class="table table-striped  table-bordered  table-sm mb-1 "
+         [ngClass]="{'table_loader': loading$ | async  }">
+    <thead>
+    <tr>
+      <th scope="col" sortable="tarea" (sort)="onSort($event)"><span>Tarea</span></th>
+      <th scope="col" sortable="ciCliente" (sort)="onSort($event)"><span>ci cliente</span></th>
+      <th scope="col" sortable="servicio" (sort)="onSort($event)"><span>servicio</span></th>
+      <th scope="col" sortable="ciudad" (sort)="onSort($event)"><span>ciudad</span></th>
+      <th scope="col" sortable="clienteFinal" (sort)="onSort($event)"><span>clienteFinal</span></th>
+      <th scope="col" sortable="direccion" (sort)="onSort($event)"><span>direccion</span></th>
+      <th scope="col" sortable="operador" (sort)="onSort($event)"><span>operador</span></th>
+      <th scope="col" sortable="usuario" (sort)="onSort($event)"><span>usuario</span></th>
+      <th scope="col" sortable="categoriaCambio" (sort)="onSort($event)"><span>categoria Cambio</span></th>
+      <th scope="col" sortable="categoriaTarea" (sort)="onSort($event)"><span>categoria Tarea</span></th>
+      <th scope="col" sortable="estado" (sort)="onSort($event)"><span>estado</span></th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <ng-container *ngIf="tareasPresupuesto$ | async as tareasPresupuesto">
+      <tr *ngFor="let t of  tareasPresupuesto"
+          [ngClass]="{'tr__loader': t.tarea === tareasPresupuestoEdit$.tarea}"  >
+        <td><a class="underline-hover c-primary" (click)="onVerTarea(t)" >
+          <span>{{ t.tarea }}</span></a>
+        </td>
+        <td><span>{{ t.ciCliente }}</span></td>
+        <td><span>{{ t.servicio }}</span></td>
+        <td><span>{{ t.ciudad }}</span></td>
+        <td><span>{{ t.clienteFinal }}</span></td>
+        <td><span>{{ t.direccion }}</span></td>
+        <td><span>{{ t.operador }}</span></td>
+        <td><span>{{ t.usuario }}</span></td>
+        <td><span>{{ t.categoriaCambio }}</span></td>
+        <td><span>{{ t.categoriaTarea }}</span></td>
+        <td><span>{{ t.estado }}</span></td>
+
+
+      </tr>
+    </ng-container>
+
+    <tr *ngIf="(tareasPresupuesto$ | async)?.length === 0" >
+      <td colspan="99" class="text-center">
+        <span class="mb-0 ">No se encuentran registros para su busqueda</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-container *ngIf="tareasPresupuesto$ | async as tareasPresupuesto " >
+    <ng-container *ngIf="tareasPresupuestoAux$ | async as tareasPresupuestoAux ">
+      <app-paginado
+        [items]="tareasPresupuesto"
+        [itemsAux]="tareasPresupuestoAux"
+        (itemsPaginado)="onItemsPaginado($event)"></app-paginado>
+    </ng-container>
+  </ng-container>
+</div>
+
+

@@ -1,0 +1,11 @@
+@import "../../../../../scss/variables";
+
+a[aria-expanded="true"] {
+  background-color: $color-icono-hover;
+  color: $color-primary;
+}
+
+
+ul{
+  margin-left: $navigation-a-padding-x * 2 ;
+}

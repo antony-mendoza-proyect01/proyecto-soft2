@@ -1,0 +1,118 @@
+<header class="header  ">
+  <div class="header-content px-2">
+    <div class="header-content__logo">
+      <div class="header-content__logo__title">
+        <a class="text-center w-100">
+
+
+          <figure class="m-0" [routerLink]="urlHome">
+            <img [src]="logo" alt="logo">
+          </figure>
+
+<!--          <h1 class="fw-bold m-0 c-t-primary" >-->
+<!--            <i class="fas  fa-font-awesome"></i>-->
+<!--            {{nombreApp}}</h1>-->
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="header-content__complete"   >
+
+      <a class="header-content__complete__toggle mx-3" (click)="toggleHeader()">
+        <i class="fas fa-solid fa-bars t-c-primary"></i>
+      </a>
+
+      <div class="header-content__complete__crumb ml-3">
+
+        <ul class="navbar-nav header-content__complete__crumb__container">
+
+          <li class="nav-item dropdown-item"
+              *ngFor="let n of navigationAplicacion">
+            <a  class="nav-item dropdown-toggle header-content__complete__crumb__container__action"
+                role="button" data-bs-toggle="dropdown">
+              <figure class="m-0">
+                <img [src]="n.icono" alt="logo">
+              </figure>
+              <span>{{n.titulo}}</span>
+            </a>
+
+            <ul class="dropdown-menu">
+
+              <li class="nav-item dropdown" *ngFor="let navegacion of n.navegacion">
+
+                <ng-container
+                  *ngIf="!navegacion.tieneMenu">
+                  <a class="nav-item dropdown-item" [routerLink]="navegacion.link"
+                  ><p>{{navegacion.titulo}}</p></a>
+                </ng-container>
+
+                <ng-container *ngIf="navegacion.tieneMenu">
+                  <a class="nav-item dropdown-item" role="button" data-bs-toggle="dropdown">
+                    <p>{{navegacion.titulo}}</p> <i class="fas fa-angle-right"></i></a>
+
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li  *ngFor="let subMenu of navegacion.subMenu">
+                      <a class="nav-item dropdown-item" [routerLink]="subMenu.link"><p>{{subMenu.titulo}}</p></a>
+                    </li>
+                  </ul>
+                </ng-container>
+
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="header-content__complete__icon">
+
+        <div ngbDropdown class="d-inline-block" id="ngbDropdown">
+          <button type="button"
+                  class="btn btn-icono"
+                  id="dropdownBasic1" ngbDropdownToggle>
+            <i class="fas fa-user text-white"></i>
+          </button>
+          <div ngbDropdownMenu
+               aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem  >
+              <span class="fw-bold">{{user?.username}}</span></button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem (click)="cerrarSesion()">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span>Cerrar sesión</span></button>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+</header>
+
+
+
+<div class="content-page-dashboard header-content__complete"
+     [ngClass]="{'active': isCollapsedHeader}">
+  <!------ Init, navigation ------>
+  <nav id="sidebar"
+       class="p-2"
+       [ngClass]="{'active': active}">
+    <a *ngFor="let n of navigationAplicacion">
+      <h5 class="d-flex">
+        <i class="fas  {{n.icono}} me-2"></i><span>{{n.titulo}}</span>
+      </h5>
+
+      <app-navigation-list [navigations]="n.navegacion"></app-navigation-list>
+    </a>
+  </nav>
+  <!------ End, navigation ------>
+</div>

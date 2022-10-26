@@ -1,0 +1,81 @@
+@import "variables";
+
+label {
+  font-weight: 500;
+}
+//
+//@mixin size-input {
+//  height: 3rem;
+//  min-height: 3rem;
+//  max-height: 3rem;
+//}
+//
+//.form-group {
+//  position: relative;
+//  margin-bottom: $tamano-pagina;
+//  width: 100%;
+//  & label {
+//    color: $color-text;
+//    font-size: $font-size-secondary;
+//    font-weight: normal;
+//    position: absolute;
+//    pointer-events: none;
+//    left: $tamano-pagina * 1.5;
+//    top: 0.85rem;
+//    margin-bottom: 0;
+//    transition: $transition-time ease all;
+//  }
+//}
+//textarea {
+//  resize: none;
+//}
+//select{
+//  appearance: auto !important;
+//}
+//
+//@mixin form-template {
+//  top: 0;
+//  left: $tamano-pagina * 1.5;
+//  padding: 0 6px 0 0;
+//  font-weight: 500;
+//}
+//.ng-invalid{
+//  @include form-template;
+//}
+//input,
+//textarea,
+//select{
+//  &.form-control{
+//    border-radius: $border-radius-input-action;
+//    font-size: $font-size-primary;
+//    @include size-input;
+//    padding: 10px  $tamano-pagina * 1.5 0;
+//  }
+//  &:focus {
+//    outline: none !important;
+//    border-color: $color-primary !important;
+//    box-shadow: none !important;
+//  }
+//  &:focus ~ label,
+//  &.ng-valid ~ label, &.is-invalid  ~  label{
+//    @include form-template;
+//  }
+//  &:focus ~ .bar:before {
+//    width: 100%;
+//  }
+//  &:focus ~ label{
+//    color: $color-container-primary;
+//    box-shadow: none!important;
+//  }
+//  &:invalid ~ label{
+//    left: $tamano-pagina * 1.5;
+//    color: $color-danger;
+//  }
+//}
+//.input-group button{
+//  @include size-input;
+//}
+//
+//select ~ div  {
+//  margin-left: 0;
+//}
